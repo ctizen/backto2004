@@ -27,3 +27,33 @@
 единицу времени.
 - Время открытия страницы будем считать, как Time to first interactive за вычетом сетевых издержек для страницы,
 содержащей первые N товаров (N - количество товаров в куске списка).
+
+--------------------------------
+
+Параметры проведения нагрузки:
+- Утилита siege, режим benchmark, файл на 300 различных урлов
+- Встроенный http-сервер php без fpm и оптимизаций, в 1 поток
+- Локальный mysql, ровно 1,000,000 строк в основной таблице
+- 1 процесс memcached
+- Железо Intel Core i5-7200U, 16GB RAM
+- ОС Fedora Linux 25 x64, PHP 5.4, Mysql 5.7 community edition.
+
+Transactions:                  38554 hits
+Availability:                 100.00 %
+Elapsed time:                  95.47 secs
+Data transferred:            1171.40 MB
+Response time:                  0.06 secs
+Transaction rate:             403.83 trans/sec
+Throughput:                    12.27 MB/sec
+Concurrency:                   24.95
+Successful transactions:       38554
+Failed transactions:               0
+Longest transaction:            0.29
+Shortest transaction:           0.03
+
+Потребление памяти php: 20 МБ
+Нагрузка на процессор php: 80% на одно ядро
+Потребление памяти mysql: 273 МБ
+Нагрузка на процессор mysql: 8% на одно ядро
+Потребление памяти memcached: 5 МБ
+Нагрузка на процессор memcached: 5% на одно ядро

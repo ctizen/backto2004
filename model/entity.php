@@ -1,19 +1,28 @@
 <?php
 
-function getEntitiesList($db, $orderBy = 'id', $limit = 100, $offset = 0) {
+function makeEntitiesListCacheKey($order, $limit, $offset) {
+    return 'entities_' . $order . '_' . $limit . '_' . $offset;
+}
+
+function getEntitiesList($db, $cache, $orderBy = 'id', $limit = 100, $offset = 0) {
     // naive validation
     $orderBy = $orderBy === 'id' ? 'id' : 'cost';
     $limit = intval($limit);
     $offset = intval($offset);
+    $cacheKey = makeEntitiesListCacheKey($orderBy, $limit, $offset);
+
+    if ($cachedResult = memcache_get($cache, $cacheKey)) {
+        return @unserialize($cachedResult);
+    }
 
     $query = "SELECT * FROM `entity` ORDER BY $orderBy LIMIT $offset,$limit";
-
     $res = mysql_query($query, $db);
     $data = array();
     while($row = mysql_fetch_assoc($res)) {
         $data []= $row;
     }
 
+    memcache_add($cache, $cacheKey, serialize($data), null, mt_rand(10, 50));
     return $data;
 }
 
