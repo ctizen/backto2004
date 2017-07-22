@@ -6,7 +6,8 @@ function getEntitiesList($db, $orderBy = 'id', $limit = 100, $offset = 0) {
     $limit = intval($limit);
     $offset = intval($offset);
 
-    $query = "SELECT * FROM `entity` ORDER BY $orderBy LIMIT $limit,$offset";
+    $query = "SELECT * FROM `entity` ORDER BY $orderBy LIMIT $offset,$limit";
+
     $res = mysql_query($query, $db);
     $data = array();
     while($row = mysql_fetch_assoc($res)) {
@@ -26,10 +27,13 @@ function dbg__fillWithTestData($db, $count) {
         $cost = mt_rand(0, 100000000) / 100.;
 
         $rows []= "('$title', '$description', $cost, '$url')";
-    }
 
-    $query = "INSERT INTO `entity` (`title`, `description`, `cost`, `img`) VALUES " . implode(',', $rows);
-    return mysql_query($query, $db);
+        if (count($rows) >= 1000) {
+            $query = "INSERT INTO `entity` (`title`, `description`, `cost`, `img`) VALUES " . implode(',', $rows);
+            mysql_query($query, $db);
+            $rows = array();
+        }
+    }
 }
 
 function dbg__clearDb($db) {
