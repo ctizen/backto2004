@@ -3,7 +3,7 @@ require_once __DIR__ . '/commonTemplate.php';
 
 // Entities list
 
-function renderEntitiesList($entities, $raw = false) {
+function renderEntitiesList($entities, $sort, $raw = false) {
     $items = array();
     foreach ($entities as $entity) {
         $items []=
@@ -22,7 +22,8 @@ function renderEntitiesList($entities, $raw = false) {
     }
 
     return commonTemplate(
-        "<h2>Goods list</h2>" . PHP_EOL
+        "<input type='hidden' id='sortOrder' value='$sort' />"
+        . "<h2>Goods list</h2>" . PHP_EOL
         ."<table class='goodslist'><tbody>" . PHP_EOL
         . "<tr><th>#</th><th>Title</th><th>Cost</th><th>Description</th><th>Photo</th></tr>" . PHP_EOL
         . implode('', $items) . PHP_EOL

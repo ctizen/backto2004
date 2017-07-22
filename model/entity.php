@@ -22,6 +22,7 @@ function getEntitiesList($db, $cache, $orderBy = 'id', $limit = 100, $offset = 0
         $data []= $row;
     }
 
+    // Randomize expiration time for better uniformity
     memcache_add($cache, $cacheKey, serialize($data), null, mt_rand(10, 50));
     return $data;
 }

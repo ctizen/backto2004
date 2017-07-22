@@ -12,6 +12,10 @@ function commonTemplate($content)
   <link href="assets/main.css" rel="stylesheet"/>
 </head>
 <body>
+<div>
+    <a href="/www/index.php">Sort by id</a>
+    <a href="/www/index.php?sort=cost">Sort by cost</a>
+</div>
 $content
 <script src="assets/main.js"></script>
 </body>

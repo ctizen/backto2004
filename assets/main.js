@@ -6,6 +6,7 @@
     var page = 1;
 
     window.addEventListener('load', function() {
+        var sort = document.querySelector('input#sortOrder').value;
         window.addEventListener('scroll', function() {
             var height = Math.max( body.scrollHeight, body.offsetHeight,
                 html.clientHeight, html.scrollHeight, html.offsetHeight );
@@ -14,7 +15,7 @@
                 loading = true;
                 setTimeout(function() {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', 'www/index.php?raw=true&page=' + (++page), true);
+                    xhr.open('GET', 'www/index.php?raw=true&sort=' + sort + '&page=' + (++page), true);
                     xhr.send(null);
                     xhr.onreadystatechange = function(e) {
                         var xhr = e.target;
