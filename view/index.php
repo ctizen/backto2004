@@ -3,7 +3,7 @@ require_once __DIR__ . '/commonTemplate.php';
 
 // Entities list
 
-function renderEntitiesList($entities) {
+function renderEntitiesList($entities, $raw = false) {
     $items = array();
     foreach ($entities as $entity) {
         $items []=
@@ -14,6 +14,11 @@ function renderEntitiesList($entities) {
         . "  <td>${entity['description']}</td>" . PHP_EOL
         . "  <td>${entity['img']}</td>" . PHP_EOL
         . "</tr>" . PHP_EOL;
+    }
+
+    $items []= '<tr class="load_more"></tr>'; // marker for data insertion
+    if ($raw) { // to load more data to existing page
+        return '<html><body><table><tbody class="insertion_data">' . implode('', $items) . '</tbody></table></body></html>';
     }
 
     return commonTemplate(
