@@ -27,13 +27,32 @@ function getEntitiesList($db, $cache, $orderBy = 'id', $limit = 100, $offset = 0
     return $data;
 }
 
-function addEntity($db, $cache, $data) {
+function addEntity($db, $data) {
     $query = sprintf(
         "INSERT INTO `entity` (`title`, `description`, `cost`, `img`) VALUES ('%s', '%s', %.2f, '%s')",
         mysql_real_escape_string($data['title'], $db),
         mysql_real_escape_string($data['description'], $db),
         floatval($data['cost']),
         mysql_real_escape_string($data['img'], $db)
+    );
+
+    return mysql_query($query, $db);
+}
+
+function getEntityData($db, $id) {
+    $query = "SELECT * FROM `entity` WHERE id = " . intval($id);
+    $res = mysql_query($query, $db);
+    return mysql_fetch_assoc($res);
+}
+
+function updateEntity($db, $data) {
+    $query = sprintf(
+        "UPDATE `entity` SET `title` = '%s', `description` = '%s', `cost` = %.2f, `img` = '%s' WHERE id = %d",
+        mysql_real_escape_string($data['title'], $db),
+        mysql_real_escape_string($data['description'], $db),
+        floatval($data['cost']),
+        mysql_real_escape_string($data['img'], $db),
+        intval($data['id'])
     );
 
     return mysql_query($query, $db);
