@@ -27,6 +27,18 @@ function getEntitiesList($db, $cache, $orderBy = 'id', $limit = 100, $offset = 0
     return $data;
 }
 
+function addEntity($db, $cache, $data) {
+    $query = sprintf(
+        "INSERT INTO `entity` (`title`, `description`, `cost`, `img`) VALUES ('%s', '%s', %.2f, '%s')",
+        mysql_real_escape_string($data['title'], $db),
+        mysql_real_escape_string($data['description'], $db),
+        floatval($data['cost']),
+        mysql_real_escape_string($data['img'], $db)
+    );
+
+    return mysql_query($query, $db);
+}
+
 function dbg__fillWithTestData($db, $count) {
     $rows = array();
 
