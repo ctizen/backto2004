@@ -11,8 +11,12 @@ function renderEntitiesList($entities, $sort, $raw = false) {
         . "  <td>${entity['id']}</td>" . PHP_EOL
         . "  <td>${entity['title']}</td>" . PHP_EOL
         . "  <td>${entity['cost']}</td>" . PHP_EOL
-        . "  <td>${entity['description']}</td>" . PHP_EOL
+        . "  <td class='description'>${entity['description']}</td>" . PHP_EOL
         . "  <td>${entity['img']}</td>" . PHP_EOL
+        . "  <td>
+            <a target='_blank' href='/www/update.php?id=${entity['id']}'>Edit</a> /
+            <a target='_blank' href='/www/delete.php?id=${entity['id']}'>Delete</a>
+            </td>"
         . "</tr>" . PHP_EOL;
     }
 
@@ -25,7 +29,7 @@ function renderEntitiesList($entities, $sort, $raw = false) {
         "<input type='hidden' id='sortOrder' value='$sort' />"
         . "<h2>Goods list</h2>" . PHP_EOL
         ."<table class='goodslist'><tbody>" . PHP_EOL
-        . "<tr><th>#</th><th>Title</th><th>Cost</th><th>Description</th><th>Photo</th></tr>" . PHP_EOL
+        . "<tr><th>#</th><th>Title</th><th>Cost</th><th>Description</th><th>Photo</th><th>Operations</th></tr>" . PHP_EOL
         . implode('', $items) . PHP_EOL
         . '</tbody></table>'
     );

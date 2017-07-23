@@ -7,5 +7,5 @@ CREATE TABLE `entity` (
   `deleted` SMALLINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `cost` (`cost`),
-  KEY `deleted` (`deleted`)
+  KEY `deleted` (`deleted`) -- might be useful when cleaning up database
 ) ENGINE=InnoDB;

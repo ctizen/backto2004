@@ -6,7 +6,7 @@ require_once __DIR__ . '/../view/add.php';
 require_once __DIR__ . '/../model/entity.php';
 
 if (empty($_POST['data'])) {
-    addEntityForm();
+    echo addEntityForm();
 } else {
     if (addEntity(getDb(), $_POST['data'])) {
         header('Location: /www/add.php');

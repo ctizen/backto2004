@@ -14,7 +14,7 @@ if (empty($_POST['data'])) {
     if (empty($data)) {
         echo "No item found in DB";
     } else {
-        editEntityForm($data);
+        echo editEntityForm($data);
     }
 } else {
     if (updateEntity($db, $_POST['data'])) {

@@ -1,0 +1,20 @@
+*, html, body {
+    font-family: sans-serif;
+}
+
+table {
+    border: 0;
+}
+
+table td {
+    padding: 3px;
+    background-color: #fff8dc;
+}
+
+table th {
+    height: 20px;
+    border-bottom: 3px solid saddlebrown;
+}
+
+table td.description {
+}

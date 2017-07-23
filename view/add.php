@@ -1,7 +1,8 @@
 <?php
+require_once __DIR__ . '/commonTemplate.php';
 
 function addEntityForm() {
-    echo <<<FORM
+    return commonTemplate(<<<FORM
 <h2>Add merchandise</h2>
 <form action="" method="post">
     <table>
@@ -24,5 +25,6 @@ function addEntityForm() {
         <tr><td colspan="2"><input type="submit" value="Add merchandise"></td></tr>
     </table>
 </form>
-FORM;
+FORM
+);
 }
