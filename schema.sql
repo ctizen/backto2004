@@ -4,6 +4,8 @@ CREATE TABLE `entity` (
   `description` TEXT,
   `cost` DECIMAL(10,2) NOT NULL,
   `img` VARCHAR(255),
+  `deleted` SMALLINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  KEY `cost` (`cost`)
+  KEY `cost` (`cost`),
+  KEY `deleted` (`deleted`)
 ) ENGINE=InnoDB;

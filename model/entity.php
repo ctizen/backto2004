@@ -19,7 +19,9 @@ function getEntitiesList($db, $cache, $orderBy = 'id', $limit = 100, $offset = 0
     $res = mysql_query($query, $db);
     $data = array();
     while($row = mysql_fetch_assoc($res)) {
-        $data []= $row;
+        if (!$row['deleted']) {
+            $data [] = $row;
+        }
     }
 
     // Randomize expiration time for better uniformity
@@ -55,6 +57,11 @@ function updateEntity($db, $data) {
         intval($data['id'])
     );
 
+    return mysql_query($query, $db);
+}
+
+function deleteEntity($db, $id) {
+    $query = "UPDATE `entity` SET `deleted` = 1 WHERE id = " . intval($id);
     return mysql_query($query, $db);
 }
 
