@@ -15,7 +15,7 @@
                 loading = true;
                 setTimeout(function() {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', 'www/index.php?raw=true&sort=' + sort + '&page=' + (++page), true);
+                    xhr.open('GET', '/index.php?raw=true&sort=' + sort + '&page=' + (++page), true);
                     xhr.send(null);
                     xhr.onreadystatechange = function(e) {
                         var xhr = e.target;
