@@ -14,8 +14,8 @@ function renderEntitiesList($entities, $sort, $raw = false) {
         . "  <td class='description'>${entity['description']}</td>" . PHP_EOL
         . "  <td>${entity['img']}</td>" . PHP_EOL
         . "  <td>
-            <a target='_blank' href='/www/update.php?id=${entity['id']}'>Edit</a> /
-            <a target='_blank' href='/www/delete.php?id=${entity['id']}'>Delete</a>
+            <a target='_blank' href='/update.php?id=${entity['id']}'>Edit</a> /
+            <a target='_blank' href='/delete.php?id=${entity['id']}'>Delete</a>
             </td>"
         . "</tr>" . PHP_EOL;
     }

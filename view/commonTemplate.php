@@ -13,9 +13,9 @@ function commonTemplate($content)
 </head>
 <body>
 <div>
-    <a href="/www/index.php">Sort by id</a>
-    <a href="/www/index.php?sort=cost">Sort by cost</a>
-    <a href="/www/add.php" target="_blank">Add new</a>
+    <a href="/index.php">Sort by id</a>
+    <a href="/index.php?sort=cost">Sort by cost</a>
+    <a href="/add.php" target="_blank">Add new</a>
 </div>
 $content
 <script src="assets/main.js"></script>
